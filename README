@@ -1,0 +1,81 @@
+ESR - LaTeX package
+===================
+
+This LaTeX package gives you the possibility to print an inpayment slip with
+reference number as it is used in Switzerland and Switzerland only. The correct
+term is ESR ('Einzahlungsschein mit Referenznummer') and often referred to as
+'Oranger Einzahlungsschein'. The package features a low level positioning style
+file as well as a user level style file that formats the fields accoding to
+specifications, does the checksum calculation (something TeX is not really the
+prefect language for), as well as the possibility to preset some of the more
+static fields in a configuration file.
+
+Disclaimer
+----------
+
+The use of this package is not for everybody! It's about money transfers, and
+(especially Swiss) people and companies do not joke about that. In accordance
+to the copyright notice of this package, I cannot be hold reliable for any
+damage whatsoever (incl. financial ruin) that occurred because of the use of
+this package.
+
+Before being allowed to print ESR's you need to be registered by your financial
+institute. This might include proof prints, special printer requirements, etc..
+They will provide you the numbers and names that need to be printed on the ESR.
+
+Contact
+-------
+
+Author: Christian Luginbühl <dinkel@pimprecords.com>
+Home:   <http://github.com/dinkel/latex-esr>
+
+Dependencies
+------------
+
+The low level style file 'esrpos.sty' requires the 'textpos' package that
+usually is already installed on your LaTeX enabled computer (otherwise grab it
+at CTAN) as well as the OCR-B font designed by Adam Frutiger (in this package
+referred to with 'fob') and 'Adobe Helvetica' font (referred to with 'phv').
+The latter font is pretty standard and not obligatorily needed as the
+specifications don't explicitely tell what font to use, however I chose to use
+this font out of aestetical reasons. You can change this is the esrpos.sty file
+if needed. The former font is obligatory to be used in one field (here its used
+in three) and unfortunately is not included in a standard distribution. On CTAN
+you will find the Metafont files of this font with an unclear copyright notice.
+The author claims that he created the font directly out of a DIN standard so I
+think there should be no restrictions in the use of this font.
+
+The 'esr.sty' file has no direct dependencies except the 'esrpos' package.
+
+Installation
+------------
+
+Just extract the package and run 'latex esr.ins' then copy the generated files
+in a folder where LaTeX finds them. Run 'texhash' or whatever command recreates
+the file database and you are ready to go.
+
+Documentation
+-------------
+
+The documentation can either be downloaded separately or created running LaTeX
+on the 'esr.dtx' file (something like 'pdflatex esr.dtx').
+
+License
+-------
+
+See the LICENSE file.
+
+Todo
+----
+
+There are more types of formats and uses (epsecally hanlding Euros as the
+currency) than currently supported by this package. As I currently have no need
+for this functionality, this is not implemented yet, although it shouldn't be
+hard to do.
+
+Comments / Bugs
+---------------
+
+I'm eager to hear your comments about this piece of software. Also if you find
+a bug or thought of an enhancment, please use GitHubs bugtracking system. This
+packages home is stated above.

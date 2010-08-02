@@ -1,35 +1,35 @@
 % \iffalse meta-comment
 %
-% Copyright (C) 2007 by Christian Luginbuehl (Dinkel)
+% Copyright (C) 2007-2010 by Christian Luginbühl
 %
-% This work may be distributed and/or modified under the conditions 
-% of the LaTeX Project Public License, either version 1.3 of this 
+% This work may be distributed and/or modified under the conditions
+% of the LaTeX Project Public License, either version 1.3 of this
 % license or (at your option) any later version.
 %
 % The latest version of this license is in
 %
 %   http://www.latex-project.org/lppl.txt
 %
-% and version 1.3 or later is part of all distributions of LaTeX 
+% and version 1.3 or later is part of all distributions of LaTeX
 % version 2005/12/01 or later.
 %
 % This work has the LPPL maintenance status `maintained'.
-% 
+%
 % The Current Maintainer of this work is:
 %
-%   Christian Luginbuehl, christian.luginbuehl@pimprecords.com
+%   Christian Luginbühl, dinkel@pimprecords.com
 %
 % This work consists of the files:
 %
-%   esr.ins, esr.dtx and the derived files esr.sty, esrpos.sty
+%   esr.ins, esr.dtx and the derived files esr.sty, esrpos.sty, esr.pdf
 %
 % \fi
 % \iffalse
 %<esr|esrpos>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<esr>\ProvidesPackage{esr}
-%<esr>  [2007/04/21 v0.8 Helper package to create 'Einzahlungsschein mit Referenznummer']
+%<esr>  [2010/08/02 v0.8.1 Helper package to create 'Einzahlungsschein mit Referenznummer']
 %<esrpos>\ProvidesPackage{esrpos}
-%<esrpos>  [2007/04/20 v0.8 'Einzahlungsschein mit Referenznummer' positioning package]
+%<esrpos>  [2010/08/02 v0.8.1 'Einzahlungsschein mit Referenznummer' positioning package]
 %
 %<*driver>
 \documentclass{ltxdoc}
@@ -71,7 +71,7 @@
 % \title{The \textsf{esr} package\thanks{This document
 %   corresponds to \textsf{esr}~\fileversion,
 %   dated \filedate.}}
-% \author{Christian Luginb\"uhl (Dinkel) \\ \texttt{christian.luginbuehl@pimprecords.com}}
+% \author{Christian Luginb\"uhl \\ \texttt{dinkel@pimprecords.com}}
 %
 % \maketitle
 %
@@ -83,8 +83,8 @@
 %
 % \section{Introduction}
 %
-% In Switzerland ESR's are the evolution of the normal inpayment slip, 
-% where account, amount and a reference number are computer readably encoded 
+% In Switzerland ESR's are the evolution of the normal inpayment slip,
+% where account, amount and a reference number are computer readably encoded
 % on it which an optical character recognition machine can read. This lowers
 % processing times, saves fees from the recipient of the money and also
 % identifies the sender with a code set by you.
@@ -94,36 +94,36 @@
 % first deals with placing the values at the correct spots with the correct
 % fonts. The latter is more of a high level library that parses the values
 % given, calculates the necessary checksums (quite hard to to in \TeX\ ;-)),
-% formats them nicely and then propagates them to the print macros of the 
+% formats them nicely and then propagates them to the print macros of the
 % first file.
 %
 % \section{Disclaimer}
 %
 % The use of this package is not for everybody! It's about money transfers, and
 % (especially Swiss) people and companies do not joke about that. In accordance
-% to the copyright notice (\LaTeX\ Project Public License) in the source files 
+% to the copyright notice (\LaTeX\ Project Public License) in the source files
 % of this package, I cannot be hold reliable for any damage whatsoever (incl.
 % financial ruin) that occurred because of the use of this package.\bigskip
 %
 % In order to be allowed to print and send ESR's out to your customers, the more
-% than a few financial institutes in Switzerland have different rules of 
-% application. It consists basically of saying that you want to use this option 
-% in order to get your own personal ESR account number and different other 
-% information to correctly fill out the different fields on such a inpayment slip. 
+% than a few financial institutes in Switzerland have different rules of
+% application. It consists basically of saying that you want to use this option
+% in order to get your own personal ESR account number and different other
+% information to correctly fill out the different fields on such a inpayment slip.
 % Another thing they need from you are a few copies done with the printer that
-% will actually be used in the future to print the inpayment slips, so they 
+% will actually be used in the future to print the inpayment slips, so they
 % can approve them.\bigskip
 %
 % And also: This package is not (yet?) a complete round up for all specified
 % ways to print these inpayment slips. First of all, currently only ESR and ESR+
 % in CHF (Swiss Franks). Payments in EUROs is currently not supported, as well
-% as other special uses neither. It forces you to use the empty ESR's to be 
+% as other special uses neither. It forces you to use the empty ESR's to be
 % preprinted at the bottom of a DIN A4 sheet. All other formats are not supported
 % either. This is due to my own personal use of them, so if you need to have
 % another form/currency to be supported I'm willing to implement this.\bigskip
 %
-% And one last word of warning: This package is considered to be in beta status. 
-% It might happen, that things change in the API, although I'm pretty happy the 
+% And one last word of warning: This package is considered to be in beta status.
+% It might happen, that things change in the API, although I'm pretty happy the
 % way it works (since 2004).
 %
 % \section{Prequisistes}
@@ -151,13 +151,13 @@
 %
 % As you will see further down, the macro names quite often consist of a mixture
 % of German and English. The reason for this is, that there are no ESR's in
-% English language. Instead of trying to invent English names for the 
-% different fields (which might have lead to imprecise terms and even more 
+% English language. Instead of trying to invent English names for the
+% different fields (which might have lead to imprecise terms and even more
 % confusion), I decided to just use the German ones.
 %
 % \subsection{esrpos.sty}
 %
-% It is possible and sometimes maybe desired to use only the |esrpos.sty| file 
+% It is possible and sometimes maybe desired to use only the |esrpos.sty| file
 % so all of the printing macros are publicly available (a.k.a. no @ symbol in
 % their names).
 %
@@ -169,21 +169,21 @@
 % The official specifications of this inpayment slip can be found at\medskip
 %
 % \small\textsl{http://www.postfinance.ch/pf/ref/de/seg/popups/handbuecher.popup.592.html}\normalsize\medskip
-% 
+%
 % where you find a handbook ``ESR Oranger Einzahlungsschein in CHF und EURO''
 % in four different languages (German, French, Italian and English).\medskip
 %
-% Whatever macro has the additional \ldots|Beleg|\ldots in its name, goes to the 
+% Whatever macro has the additional \ldots|Beleg|\ldots in its name, goes to the
 % small detachable part of the ESR that after paying, acts as your receipt. If
 % nothing else is stated the two corresponding macros should take the exact same
 % string.\bigskip
 %
 % \DescribeMacro{\esrposEinzahlungFuer}
 % \DescribeMacro{\esrposBelegEinzahlungFuer}
-% These two macros expect one argument, which is the string that is printed at 
-% the preset location. Depending if your account is from a bank or ``Die Post'', 
-% there goes either the Name and Address of your bank (in two lines, like 
-% |Valiant Bank\\3001 Bern|) otherwise your name and address. The exact string 
+% These two macros expect one argument, which is the string that is printed at
+% the preset location. Depending if your account is from a bank or ``Die Post'',
+% there goes either the Name and Address of your bank (in two lines, like
+% |Valiant Bank\\3001 Bern|) otherwise your name and address. The exact string
 % has to be asked from your financial institute.
 %
 % \DescribeMacro{\esrposZugunstenVon}
@@ -191,7 +191,7 @@
 % These two macros expect one argument, which is the string that is printed at
 % the preset location. If your account is from ``Die Post'' this field is empty,
 % otherwise there you have to print your name and address, the same as it is
-% set on your bank account. Again: Detailed information about this field you 
+% set on your bank account. Again: Detailed information about this field you
 % will get from your financial institute.
 %
 % \DescribeMacro{\esrposKonto}
@@ -203,7 +203,7 @@
 % \DescribeMacro{\esrposBetrag}
 % \DescribeMacro{\esrposBelegBetrag}
 % These two macros expect two arguments forming the amount that to be paid to
-% you. It's split in Franken and Rappen (which is the Swiss currency). Beware 
+% you. It's split in Franken and Rappen (which is the Swiss currency). Beware
 % that the Rappen in Switzerland are rounded to 5, and the specifications of the
 % ESR won't allow anything else.
 %
@@ -216,7 +216,7 @@
 % |\esrposBelegEinbezahltVon{123441240\medskip\\Max Powers ...}|,\medskip
 %
 % while the other would look like\medskip
-% 
+%
 % |\esrposEinbezahltVon{Max Powers ...}|,\medskip
 %
 % \DescribeMacro{\esrposReferenznummer}
@@ -235,7 +235,7 @@
 %
 % \DescribeMacro{\esrposKodierzeile}
 % This field takes one argument, all the machine readable information formed to
-% to the transaction. It is very strict on its format and therefore needs to be 
+% to the transaction. It is very strict on its format and therefore needs to be
 % generated carefully. Here also check the ``Handbook'' above and discuss everything
 % with your financial institute. This field will be printed in OCR-B font as
 % specified.
@@ -250,8 +250,8 @@
 %
 % \DescribeMacro{\esrEinzahlungFuer}
 % It takes one argument and its contents need to fulfil the same conditions as its
-% conterparts in |esrpos|. Like all of the next few macros it bascially stores the 
-% contents of its parameter and is printed only after |\esrPrint| is called. It is 
+% conterparts in |esrpos|. Like all of the next few macros it bascially stores the
+% contents of its parameter and is printed only after |\esrPrint| is called. It is
 % obligatory to set it in order to get a valid ESR.
 %
 % \DescribeMacro{\esrZugunstenVon}
@@ -268,18 +268,18 @@
 % crucial to have the Rappen part written with two digits, so short amounts like |22.5|
 % or simply |45| are not supported at the moment and lead to a incorrect ESR. It is
 % although possible to leave this field unset. It this case |esr| will print an
-% ESR+ where the customer can fill in any amount upon payment. But beware that in this 
+% ESR+ where the customer can fill in any amount upon payment. But beware that in this
 % case you have to print on a ESR sheet that has boxed fields for every digit.
 %
 % \DescribeMacro{\esrEinbezahltVon}
 % It also takes one argument being the name and address of your customer. The hint about
-% the common practice with also giving the reverence number as described at the 
+% the common practice with also giving the reverence number as described at the
 % corresponding macro in |esrpos| does not apply here, because this is done automatically
 % in |esr|. It is obligatory to set this filed in order to get a valid ESR.
 %
 % \DescribeMacro{\esrPrefix}
 % If you are printing BESR's (being ESR's for bank accounts) you most probably get from
-% your preferred financial institute a number that will form the beginning of the reference 
+% your preferred financial institute a number that will form the beginning of the reference
 % number. If your account is from a bank, then this field is obligatory, if your account
 % if from ``Die Post'' than you can leave it empty.
 %
@@ -289,9 +289,9 @@
 % number, and so on. The checksum is automatically calculated.
 %
 % \DescribeMacro{\esrPrint}
-% This is the workhorse and has no parameters. Its purpose is to print the entire ESR 
-% by calling the different functions seen in the |esrpos.sty| file. It also parses the 
-% entries made above, calls the checksum calculation macros and calls pretty-printers 
+% This is the workhorse and has no parameters. Its purpose is to print the entire ESR
+% by calling the different functions seen in the |esrpos.sty| file. It also parses the
+% entries made above, calls the checksum calculation macros and calls pretty-printers
 % for nicely printing everything.
 %
 % This is the only macro that has to be called within |\begin{document}| and |\end{document}|.
@@ -359,14 +359,14 @@
 \RequirePackage[absolute]{textpos}
 %    \end{macrocode}
 %
-% Then we set the origin positioning to the top left corner of the DIN A4 paper, which (no 
+% Then we set the origin positioning to the top left corner of the DIN A4 paper, which (no
 % surprises) is at (0, 0) -- so one might say this declaration is redundant. This is partially
-% true, although this give me the chance to explain you, that if your printer constantly has 
-% a little offset in one direction, it is possible to update this value somewhere in your 
+% true, although this give me the chance to explain you, that if your printer constantly has
+% a little offset in one direction, it is possible to update this value somewhere in your
 % document. It is also entered here to show that it might be easy to update the |esrpos| style
-% file to work with other formats of ESR's. 
+% file to work with other formats of ESR's.
 %
-% Beware that if you use the |textpos| package somewhere else in your document, make sure that 
+% Beware that if you use the |textpos| package somewhere else in your document, make sure that
 % you reset the |\textblockorigin| to this value before using one of the printing macros.
 %
 %    \begin{macrocode}
@@ -385,7 +385,7 @@
 % \end{macro}
 %
 % \begin{macro}{\esrposM@prePrint}
-% Saves current values and sets indent and skip the way they are used in ESR 
+% Saves current values and sets indent and skip the way they are used in ESR
 % writing.
 %
 %    \begin{macrocode}
@@ -411,10 +411,10 @@
 %
 % \begin{macro}{\esrposM@formatNormal}
 % Sets font and size for fields in the ESR that use a ``normal'' font. Note: I could
-% have left it font alone and only changed the size to fit the fields, however I 
-% think it look badly to use a serif font in the ESR, so I decided to use the Adobe 
+% have left it font alone and only changed the size to fit the fields, however I
+% think it look badly to use a serif font in the ESR, so I decided to use the Adobe
 % Helvetica font, that is (hopefully) installed in every \LaTeX\ distribution. In case
-% you still want to use your documents font, you can simply delete the |\usefont| command 
+% you still want to use your documents font, you can simply delete the |\usefont| command
 % or |\renewcommand| this macro.
 %
 %    \begin{macrocode}
@@ -431,7 +431,7 @@
 % Sets font and size for fields in the ESR that use the OCR-B font. I chose to not
 % only print the `Kodierzeile' in OCR-B (which is the only one, that according to
 % the specifications must be in this font), but also the `Referenzzeile' and
-% `Betrag' (amount). It has aestethical reasons. Again, if you are unhappy, you 
+% `Betrag' (amount). It has aestethical reasons. Again, if you are unhappy, you
 % are free to change the macro call in |\esrposKodierzeile| and |\esrpos[Beleg]Betrag|.
 %
 %    \begin{macrocode}
@@ -461,7 +461,7 @@
 % allowed and where you can find the official documentation.
 %
 %    \begin{macrocode}
-\newcommand{\esrposEinzahlungFuer}[1] {  
+\newcommand{\esrposEinzahlungFuer}[1] {
   \begin{textblock*}{5.0cm}(6.58cm, 20.1cm)
     \esrposM@formatNormal{#1}
   \end{textblock*}
@@ -475,35 +475,35 @@
 }
 %    \end{macrocode}
 %    \begin{macrocode}
-\newcommand{\esrposZugunstenVon}[1] { 
+\newcommand{\esrposZugunstenVon}[1] {
   \begin{textblock*}{5.0cm}(6.58cm, 21.4cm)
     \esrposM@formatNormal{#1}
   \end{textblock*}
 }
 %    \end{macrocode}
 %    \begin{macrocode}
-\newcommand{\esrposBelegZugunstenVon}[1] { 
+\newcommand{\esrposBelegZugunstenVon}[1] {
   \begin{textblock*}{5.0cm}(0.5cm, 21.4cm)
     \esrposM@formatNormal{#1}
   \end{textblock*}
 }
 %    \end{macrocode}
 %    \begin{macrocode}
-\newcommand{\esrposKonto}[1] { 
+\newcommand{\esrposKonto}[1] {
   \begin{textblock*}{2.5cm}[0, 1.0](9.08cm, 23.65cm)
     \esrposM@formatNormal{#1}
   \end{textblock*}
 }
 %    \end{macrocode}
 %    \begin{macrocode}
-\newcommand{\esrposBelegKonto}[1] { 
+\newcommand{\esrposBelegKonto}[1] {
   \begin{textblock*}{2.5cm}[0, 1.0](3.0cm, 23.65cm)
     \esrposM@formatNormal{#1}
   \end{textblock*}
 }
 %    \end{macrocode}
 %    \begin{macrocode}
-\newcommand{\esrposBetrag}[2] { 
+\newcommand{\esrposBetrag}[2] {
   \begin{textblock*}{3.8cm}[1.0, 0.5](10.28cm, 24.42cm)
     \esrposM@formatOCRB{\begin{flushright}#1\end{flushright}}
   \end{textblock*}
@@ -513,7 +513,7 @@
 }
 %    \end{macrocode}
 %    \begin{macrocode}
-\newcommand{\esrposBelegBetrag}[2] { 
+\newcommand{\esrposBelegBetrag}[2] {
   \begin{textblock*}{3.8cm}[1.0, 0.5](4.2cm, 24.42cm)
     \esrposM@formatOCRB{\begin{flushright}#1\end{flushright}}
   \end{textblock*}
@@ -523,28 +523,28 @@
 }
 %    \end{macrocode}
 %    \begin{macrocode}
-\newcommand{\esrposEinbezahltVon}[1] { 
+\newcommand{\esrposEinbezahltVon}[1] {
   \begin{textblock*}{7.3cm}(12.68cm, 23.9cm)
     \esrposM@formatNormal{#1}
   \end{textblock*}
 }
 %    \end{macrocode}
 %    \begin{macrocode}
-\newcommand{\esrposBelegEinbezahltVon}[1] { 
+\newcommand{\esrposBelegEinbezahltVon}[1] {
   \begin{textblock*}{5.0cm}(0.5cm, 25.2cm)
     \esrposM@formatNormal{#1}
   \end{textblock*}
 }
 %    \end{macrocode}
 %    \begin{macrocode}
-\newcommand{\esrposReferenznummer}[1] { 
+\newcommand{\esrposReferenznummer}[1] {
   \begin{textblock*}{8.6cm}[0.5, 0.5](16.495cm, 22.67cm)
     \esrposM@formatOCRB{\begin{center}#1\end{center}}
   \end{textblock*}
 }
 %    \end{macrocode}
 %    \begin{macrocode}
-\newcommand{\esrposKodierzeile}[1] { 
+\newcommand{\esrposKodierzeile}[1] {
   \begin{textblock*}{14.986cm}[1.0, 0.5](20.34cm, 27.79cm)
     \esrposM@formatOCRB{\begin{flushright}#1\end{flushright}}
   \end{textblock*}
@@ -582,7 +582,7 @@
 % We start by initializing a few counters that need to be set in a global context.
 %
 % \begin{macro}{\esrC@spacer}
-% If set to |-1| no spacers will be printed when calling the macros |\esrM@zeros| or 
+% If set to |-1| no spacers will be printed when calling the macros |\esrM@zeros| or
 % |\esrM@rawPrint|. If its set to |0| to start, this counter actually counts up every
 % character printed, and |\esrM@addSpacerIfNeeded| will print a space at the correct
 % positions. This is used to pretty print the ``Referenznummer''.
@@ -593,7 +593,7 @@
 % \end{macro}
 %
 % \begin{macro}{\esrC@rawCount}
-% This counter will hold the number of raw (aka numberic) characters while doing a 
+% This counter will hold the number of raw (aka numberic) characters while doing a
 % |\esrM@rawCount|.
 %
 %    \begin{macrocode}
@@ -636,7 +636,7 @@
 % \end{macro}
 %
 % \begin{macro}{\esrV@betragPrefix}
-% This prefix indicates that the ESR has an open ``Betrag'' field so the amount can be inserted 
+% This prefix indicates that the ESR has an open ``Betrag'' field so the amount can be inserted
 % by the recipient, if this is not overwritten by |\esrBetrag|. The value |04| is the code in the
 % Kodierzeile that represents the customer-fillable amount field.
 %
@@ -691,7 +691,7 @@
 %    \begin{macrocode}
   \ifnum\esrV@betragPrefix=1
 %    \end{macrocode}
-% The char counter is defined and set to the specified number of digits this field in the 
+% The char counter is defined and set to the specified number of digits this field in the
 % Kodierzeile can hold.
 %    \begin{macrocode}
     \newcount\esrC@charCount
@@ -722,9 +722,9 @@
 %    \begin{macrocode}
     \expandafter\esrM@checksumRec\esrV@betragFranken\relax
     \expandafter\esrM@checksumRec\esrV@betragRappen\relax
-  \fi  
+  \fi
 %    \end{macrocode}
-% The following macro needs to be called to make the last few calculations for the 
+% The following macro needs to be called to make the last few calculations for the
 % checksum. The final result is stored in the counter |\esrC@checksum|.
 %    \begin{macrocode}
   \esrM@finalizeChecksum
@@ -786,7 +786,7 @@
 %
 % \begin{macro}{\esrM@renderKodierzeile}
 % Renders the Kodierzeile by calling methods that render parts of it.
-% 
+%
 %    \begin{macrocode}
 \def\esrM@renderKodierzeile{%
 %    \end{macrocode}
@@ -841,7 +841,7 @@
 % \end{macro}
 %
 % \begin{macro}{\esrM@renderKontoInKod...}
-% Simply a redirection of the parameter to a helper macro, that expects the split parts 
+% Simply a redirection of the parameter to a helper macro, that expects the split parts
 % of the Konto.
 %
 %    \begin{macrocode}
@@ -901,7 +901,7 @@
 % \end{macro}
 %
 % \begin{macro}{\esrM@rawCountRec}
-% Counts all raw digit characters (well ... it just removes the `|-|' and `|.|' as they appear 
+% Counts all raw digit characters (well ... it just removes the `|-|' and `|.|' as they appear
 % in Konto and Betrag. The result is held by |\esrC@rawCount|.
 %
 %    \begin{macrocode}
@@ -945,7 +945,7 @@
 % \end{macro}
 %
 % \begin{macro}{\esrM@rawCountRec}
-% Prints out all raw digit characters (well ... it just removes the `|-|' and `|.|' as they appear 
+% Prints out all raw digit characters (well ... it just removes the `|-|' and `|.|' as they appear
 % in Konto and Betrag.
 %
 %    \begin{macrocode}
@@ -1038,9 +1038,9 @@
 % The official specifications of checksum calculation can be found at\medskip
 %
 % \small\textsl{http://www.postfinance.ch/pf/ref/de/seg/popups/handbuecher.popup.592.html}\normalsize\medskip
-% 
+%
 % where you find a handbook 'E-Finance Recordstrukturen' in four different
-% languages (German, French, Italian and English).  
+% languages (German, French, Italian and English).
 %
 %    \begin{macrocode}
 \def\esrM@checksumRec#1{%
@@ -1091,7 +1091,7 @@
 % \begin{macro}{\esrM@finalizeChecksum}
 % Calculates and saves the checksum in counter |\esrC@checksum|. This macro
 % has to be called after one or more calls to |\esrM@checksumRec| without
-% any parameter. 
+% any parameter.
 %
 %    \begin{macrocode}
 \def\esrM@finalizeChecksum{%
@@ -1127,7 +1127,7 @@
 % in multiple lines if writing a VESR (from ``Die Post''). Like most of
 % the following macros, it simply sets a ``variable'' that will be used
 % as a parameter for a printing macro in |esrpos|.
-% 
+%
 %    \begin{macrocode}
 \def\esrEinzahlungFuer#1{
   \def\esrV@einzahlungFuer{#1}
@@ -1138,7 +1138,7 @@
 % \begin{macro}{\esrZugunstenVon}
 % This is an optional macro if you are writing a VESR. Otherwise there
 % should go name and address as it is indicated on your bank account.
-% 
+%
 %    \begin{macrocode}
 \def\esrZugunstenVon#1{
   \def\esrV@zugunstenVon{#1}
@@ -1149,7 +1149,7 @@
 % \begin{macro}{\esrKonto}
 % This macro is needed to be set. You get the number from your financial
 % institute and it should look like `|XX-YYYY-ZZ|' (with up to 6 |Y| digits.
-% 
+%
 %    \begin{macrocode}
 \def\esrKonto#1{
   \def\esrV@konto{#1}
@@ -1161,7 +1161,7 @@
 % This macro is only required is you are writing a BESR. This number you get
 % from your bank and is (in most cases) 6 digits long. Do not put any spaces
 % in the parameter.
-% 
+%
 %    \begin{macrocode}
 \def\esrPrefix#1{
   \def\esrV@prefix{#1}
@@ -1235,7 +1235,7 @@
 %    \begin{macrocode}
 \def\esrPrint{
 %    \end{macrocode}
-% When you are going to print your ESR, this macro first launches the 
+% When you are going to print your ESR, this macro first launches the
 % different input parsers as described above.
 %    \begin{macrocode}
   \esrM@parseReferenznummer
@@ -1263,7 +1263,7 @@
 }
 %    \end{macrocode}
 % \end{macro}
-% 
+%
 % \iffalse
 %</esr>
 % \fi

@@ -1,0 +1,9 @@
+# ignore all compiled/generated files
+esr.sty
+esrpos.sty
+esr.pdf
+
+esr.log
+esr.aux
+esr.glo
+esr.idx
