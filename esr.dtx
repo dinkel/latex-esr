@@ -142,10 +142,7 @@
 % installation guides lying around in the World Wide Web, that make your life
 % at least a little bit easier.
 %
-% |esr| assumes the name of this font to be |fob|. On my installation
-% I named it accordingly to the rules given in some of those guides, but it
-% are not 'totally' strict in this naming, so make sure you name it the same
-% or message me if I was wrong with naming my font.
+% There is however a package called |ocr| providing for the required font
 %
 % \section{Usage}
 %
@@ -357,6 +354,7 @@
 %
 %    \begin{macrocode}
 \RequirePackage[absolute]{textpos}
+\RequirePackage{ocr}
 %    \end{macrocode}
 %
 % Then we set the origin positioning to the top left corner of the DIN A4 paper, which (no
@@ -437,8 +435,7 @@
 %    \begin{macrocode}
 \newcommand{\esrposM@formatOCRB}[1] {
   \esrposM@prePrint
-  \usefont{OT1}{fob}{m}{n}\fontsize{10pt}{12pt}\selectfont
-  #1%
+  \fontsize{9pt}{12pt}\ocrfamily{#1}%
   \esrposM@postPrint
 }
 %    \end{macrocode}
