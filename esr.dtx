@@ -1,6 +1,6 @@
 % \iffalse meta-comment
 %
-% Copyright (C) 2007-2010 by Christian Luginbühl
+% Copyright (C) 2007-2014 by Christian Luginbühl
 %
 % This work may be distributed and/or modified under the conditions
 % of the LaTeX Project Public License, either version 1.3 of this
@@ -19,6 +19,10 @@
 %
 %   Christian Luginbühl, dinkel@pimprecords.com
 %
+% Contributions by:
+%
+%   Christian Häusler, https://github.com/corvus-ch
+%
 % This work consists of the files:
 %
 %   esr.ins, esr.dtx and the derived files esr.sty, esrpos.sty, esr.pdf
@@ -27,9 +31,9 @@
 % \iffalse
 %<esr|esrpos>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<esr>\ProvidesPackage{esr}
-%<esr>  [2010/08/02 v0.8.1 Helper package to create 'Einzahlungsschein mit Referenznummer']
+%<esr>  [2014/12/09 v0.9.0 Helper package to create 'Einzahlungsschein mit Referenznummer']
 %<esrpos>\ProvidesPackage{esrpos}
-%<esrpos>  [2010/08/02 v0.8.1 'Einzahlungsschein mit Referenznummer' positioning package]
+%<esrpos>  [2014/12/09 v0.9.0 'Einzahlungsschein mit Referenznummer' positioning package]
 %
 %<*driver>
 \documentclass{ltxdoc}
@@ -130,19 +134,17 @@
 %
 % This package assumes that you have the following two conditions met:
 %
-% \paragraph{Textpos package}
+% \paragraph{textpos package}
 %
 % Most \LaTeX\ installations come with the |textpos| package installed
 % by default, otherwise have a look around at CTAN.
 %
-% \paragraph{OCR-B font}
+% \paragraph{ocr package and OCR-B font}
 %
-% I never liked installing fonts in \LaTeX, but the specifications need you
-% to write certain parts in this exact font. There are quite a few font
-% installation guides lying around in the World Wide Web, that make your life
-% at least a little bit easier.
-%
-% There is however a package called |ocr| providing for the required font
+% The machine readable parts of the inpayment slip need to be written in the
+% OCR-B font and installing fonts in \LaTeX\ is not fun. Fortunately most current
+% \LaTeX\ distributions ship with both the font and the |ocr| package. You might
+% want to check for ``extra fonts'' in your package manager.
 %
 % \section{Usage}
 %
@@ -180,7 +182,7 @@
 % These two macros expect one argument, which is the string that is printed at
 % the preset location. Depending if your account is from a bank or ``Die Post'',
 % there goes either the Name and Address of your bank (in two lines, like
-% |Valiant Bank\\3001 Bern|) otherwise your name and address. The exact string
+% |Your Bank\\3000 Banktown|) otherwise your name and address. The exact string
 % has to be asked from your financial institute.
 %
 % \DescribeMacro{\esrposZugunstenVon}
@@ -350,7 +352,8 @@
 % \fi
 %
 % First off, we include the |textpos| package, that allows us to place boxes anywhere
-% on the page and writing into them.
+% on the page and writing into them as well as the |ocr| package which makes it (relatively)
+% easy to use the OCR-B font for the machine readable parts of the inpayment slip.
 %
 %    \begin{macrocode}
 \RequirePackage[absolute]{textpos}

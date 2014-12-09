@@ -34,16 +34,14 @@ Dependencies
 
 The low level style file 'esrpos.sty' requires the 'textpos' package that
 usually is already installed on your LaTeX enabled computer (otherwise grab it
-at CTAN) as well as the OCR-B font designed by Adam Frutiger (in this package
-referred to with 'fob') and 'Adobe Helvetica' font (referred to with 'phv').
+at CTAN) as well as the 'ocr' package together with the OCR-B font designed by 
+Adam Frutiger and 'Adobe Helvetica' font.
 The latter font is pretty standard and not obligatorily needed as the
 specifications don't explicitely tell what font to use, however I chose to use
 this font out of aestetical reasons. You can change this is the esrpos.sty file
 if needed. The former font is obligatory to be used in one field (here its used
-in three) and unfortunately is not included in a standard distribution. On CTAN
-you will find the Metafont files of this font with an unclear copyright notice.
-The author claims that he created the font directly out of a DIN standard so I
-think there should be no restrictions in the use of this font.
+in three) for machine readability. Current LaTeX installations should allow to
+install both the package and the font, otherwise CTAN is your friend.
 
 The 'esr.sty' file has no direct dependencies except the 'esrpos' package.
 
